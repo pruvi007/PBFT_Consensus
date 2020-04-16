@@ -16,4 +16,4 @@ Run the main.py file to see the algorithm in action.
 * NetworkX - The network Visualization library of Python.
 
 ## Glimpse
-![Result from the algorithm](https://drive.google.com/open?id=1weh1Lr9n4IIlG1Xs7B53kfexBreFBZAQ)
+![Result from the algorithm](https://github.com/pruvi007/PBFT_Consensus/blob/master/shortPath.png)
