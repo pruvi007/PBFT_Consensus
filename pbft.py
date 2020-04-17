@@ -148,6 +148,7 @@ class pbft:
         result = ''
         correct = 0
         for (k,v) in zip(commit_pool.keys(),commit_pool.values()):
+            # if commit messages is greater than 2F then only commit
             if v>=2*self.faulty:
                 result = k
                 break

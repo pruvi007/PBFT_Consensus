@@ -18,5 +18,5 @@ source, destination = 1,6
 print("USER-REQUEST:\nFROM: {}, TO: {}\n".format(source,destination))
 
 # run PBFT Consensus
-pbft(source,destination,G,6)
+pbft(source,destination,G,7)
 
