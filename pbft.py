@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import random
 
 class pbft:
-    def __init__(self,source,destination,graph,faulty=5):
+    def __init__(self,source,destination,graph,faulty=6):
         self.query = [source,destination]
 
         # private key of Leader Node
@@ -21,7 +21,7 @@ class pbft:
         self.SHORTEST_PATH = shortestPath(self.GRAPH,self.query[0],self.query[1])
         
 
-        self.faulty = graph.N//3
+        self.faulty = faulty
         self.falutyNodes = []
         self.faultyLeaders = []
     
@@ -148,23 +148,25 @@ class pbft:
         result = ''
         correct = 0
         for (k,v) in zip(commit_pool.keys(),commit_pool.values()):
-            if v>correct:
-                correct = v
+            if v>=2*self.faulty:
                 result = k
+                break
+        if result != '':
+            print("Final message reached after PBFT consenus: \nShortestPath:\n{}".format(result))
+            print()
 
-        print("Final message reached after PBFT consenus: \nShortestPath:\n{}".format(result))
-        print()
+            # display the graphs
+            Gx, Gy, Gw = self.GRAPH.X, self.GRAPH.Y, self.GRAPH.W
+            GPlot = getPlot(Gx,Gy,Gw)
 
-        # display the graphs
-        Gx, Gy, Gw = self.GRAPH.X, self.GRAPH.Y, self.GRAPH.W
-        GPlot = getPlot(Gx,Gy,Gw)
+            pathx,pathy,pathw = self.SHORTEST_PATH.X, self.SHORTEST_PATH.Y, self.SHORTEST_PATH.W
+            SPPlot = getPlot(pathx,pathy,pathw)
 
-        pathx,pathy,pathw = self.SHORTEST_PATH.X, self.SHORTEST_PATH.Y, self.SHORTEST_PATH.W
-        SPPlot = getPlot(pathx,pathy,pathw)
-
-        GPlot.show("Actual Network")
-        SPPlot.show("Shortest Path from {} -> {}\nTraffic:{}\n".format(self.query[0],self.query[1],self.SHORTEST_PATH.getPath()[0]))
-        plt.show()
+            GPlot.show("Actual Network")
+            SPPlot.show("Shortest Path from {} -> {}\nTraffic:{}\n".format(self.query[0],self.query[1],self.SHORTEST_PATH.getPath()[0]))
+            plt.show()
+        else:
+            print("Unable to reach CONSENSUS\n")
 
     def controller(self):
 

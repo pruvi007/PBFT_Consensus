@@ -14,7 +14,7 @@ G = Graph(fileName)
 G.generate()
 print("Generated\n")
 
-source, destination = 5,19
+source, destination = 1,6
 print("USER-REQUEST:\nFROM: {}, TO: {}\n".format(source,destination))
 
 # run PBFT Consensus
