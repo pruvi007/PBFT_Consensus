@@ -15,7 +15,7 @@ class Graph():
         for line in file.readlines():
             x, y, w = map(int,line.split())
             self.adjList[x].append([y,w])
-            self.adjList[y].append([y,w])
+            self.adjList[y].append([x,w])
             self.X.append(x)
             self.Y.append(y)
             self.W.append(w)

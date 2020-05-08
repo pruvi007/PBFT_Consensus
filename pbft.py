@@ -158,13 +158,15 @@ class pbft:
 
             # display the graphs
             Gx, Gy, Gw = self.GRAPH.X, self.GRAPH.Y, self.GRAPH.W
-            GPlot = getPlot(Gx,Gy,Gw)
-
-            pathx,pathy,pathw = self.SHORTEST_PATH.X, self.SHORTEST_PATH.Y, self.SHORTEST_PATH.W
-            SPPlot = getPlot(pathx,pathy,pathw)
-
+            GPlot = getPlot(Gx,Gy,Gw,[])
             GPlot.show("Actual Network")
-            SPPlot.show("Shortest Path from {} -> {}\nTraffic:{}\n".format(self.query[0],self.query[1],self.SHORTEST_PATH.getPath()[0]))
+
+            pathx,pathy,pathw,edges = self.SHORTEST_PATH.X, self.SHORTEST_PATH.Y, self.SHORTEST_PATH.W, self.SHORTEST_PATH.edge
+            print(edges)
+            SPPlot = getPlot(Gx,Gy,Gw,edges)
+
+            
+            SPPlot.show("Shortest Path: {}->{}\n{}".format(self.query[0],self.query[1],result))
             plt.show()
         else:
             print("Unable to reach CONSENSUS\n")

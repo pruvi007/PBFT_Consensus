@@ -7,6 +7,7 @@ class shortestPath():
         self.destination = destination
         self.G = graph
         self.X,self.Y,self.W = [],[],[]
+        self.edge = []
     def getPath(self):
         
         # heap contains element of the form -> [ distance,node ]
@@ -44,10 +45,12 @@ class shortestPath():
         path = [self.source] + path
         # print(path)
 
+
         # convert this path to set of edges with weights (for plotting)
         for i in range(1,len(path)):
             x,y = path[i-1],path[i]
             w = self.searchForWeight(x,y)
+            self.edge.append([x,y])
             self.X.append(x)
             self.Y.append(y)
             self.W.append(w)

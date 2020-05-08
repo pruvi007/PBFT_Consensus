@@ -7,7 +7,7 @@ import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 print("Graph: ")
-fileName = "graph.txt"
+fileName = "graph2.txt"
 
 # Generate the Graph
 G = Graph(fileName)
@@ -18,5 +18,5 @@ source, destination = 1,6
 print("USER-REQUEST:\nFROM: {}, TO: {}\n".format(source,destination))
 
 # run PBFT Consensus
-pbft(source,destination,G,7)
+pbft(source,destination,G,2)
 
