@@ -20,3 +20,5 @@ Run the main.py file to see the algorithm in action.
 
 ## Glimpse
 ![Result from the algorithm](https://github.com/pruvi007/PBFT_Consensus/blob/master/shortPath.png)
+![Result from the algorithm](https://github.com/pruvi007/PBFT_Consensus/blob/master/actual.png)
+![Result from the algorithm](https://github.com/pruvi007/PBFT_Consensus/blob/master/shortest.png)
